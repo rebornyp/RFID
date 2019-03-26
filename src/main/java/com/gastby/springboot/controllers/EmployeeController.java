@@ -4,11 +4,15 @@ import com.gastby.springboot.dao.EmployeeDao;
 import com.gastby.springboot.entities.Employee;
 import com.gastby.springboot.entities.Part;
 import com.gastby.springboot.mapper.PartMapper;
+import com.gastby.springboot.utils.FileTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 import java.util.List;
 
@@ -45,8 +49,25 @@ public class EmployeeController {
 
 
     @GetMapping("/dataAnalyze")
-    public String once() {
+    public String dataController() {
+
         return "success";
+
+    }
+
+    @GetMapping("/file")
+    public String fileUpload(Model model) {
+        List<Part> parts = partMapper.queryAllParts();
+        model.addAttribute("parts", parts);
+        return "file/uploadPage";
+    }
+
+    //    上传文件
+    @ResponseBody
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public void uploadFile(@RequestParam(value = "fileinfo", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+        //上传文件的路径
+        String path = FileTools.getFileInfo(request, response, file);
     }
 
 

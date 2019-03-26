@@ -22,7 +22,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" th:class="${activeUrl=='main' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{ /main}">
+                        <a class="nav-link active" th:class="${activeUrl=='main' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/main}">
                             <span data-feather="home"></span>
                             系统主页 <span class="sr-only">(current)</span>
                         </a>
@@ -85,9 +85,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" th:class="${activeUrl=='file' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/file}">
                             <span data-feather="file-text"></span>
-                            预留功能
+                            文档上传
                         </a>
                     </li>
                 </ul>
