@@ -25,7 +25,7 @@ public class EmployeeController {
     @Autowired
     PartMapper partMapper;
 
-    @GetMapping("/list")
+    @GetMapping("/userList")
     public String queryEmps(Model model) {
         Collection<Employee> all = empDao.getAll();
         model.addAttribute("emps", all);
@@ -74,6 +74,19 @@ public class EmployeeController {
     public String showPartPosition() {
 
         return "positions/part";
+    }
+
+    @GetMapping("/transport")
+    public String showMap() {
+
+        return "transport/map";
+    }
+
+    @GetMapping("/storage")
+    public String showWareHouse(Model model) {
+        List<Part> parts = partMapper.queryAllParts();
+        model.addAttribute("parts", parts);
+        return "storage/index";
     }
 
 

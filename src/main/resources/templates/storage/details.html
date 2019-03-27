@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RFID后台管理系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{ /webjars/bootstrap/4.1.0/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/dashboard.css" th:href="@{/files/examples/dashboard.css}" rel="stylesheet">
+
+    <style type="text/css">
+
+        #left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            border:none;
+            border-right:1px solid #333;
+        }
+
+        #right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+
+        }
+
+        a {
+            text-decoration:none;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+库房A仓储信息如下：
+<div id="left">
+所有零件信息如下所示：
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>零件ID</th>
+                <th>零件名称</th>
+                <th>生产日期</th>
+                <th>制造厂商</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>01</td>
+                <td>ERLYS2Z910</td>
+                <td>遥控天线1B</td>
+                <td>26/06/2018 17:25:32</td>
+                <td>一分厂</td>
+                <td>查看</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="right">
+出入库监控历史记录信息如下：
+
+</div>
+</body>
+</html>

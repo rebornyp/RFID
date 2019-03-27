@@ -34,10 +34,30 @@
                 opacity: 1
             }
         }
+    </style>
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+    <style type="text/css">
+
+        #main {
+            width: 100%;
+            position: relative;
+            border:none;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        .info {
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            background-color: #99cc66;
+        }
+
+        textarea {
+            text-align: left;
+            font-size: 14px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
     </style>
 
@@ -56,41 +76,29 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <h2 class="h2">Section title</h2>
             <h2>构件信息文档上传平台</h2>
-
-            <form method="post" enctype="multipart/form-data" id="upload">
-                <span><input type="file" name="file"  style="width:500px;" class="uploadfile" id="file">
-                <input type="button" value="上传"  class="addbtn"></span>
-            </form>
-
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>零件ID</th>
-                            <th>标签ID</th>
-                            <th>零件名称</th>
-                            <th>生产日期</th>
-                            <th>制造厂商</th>
-                            <th>所在位置</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="part:${parts}">
-                        <td th:text="${part.id}"></td>
-                        <td th:text="${part.pid}"></td>
-                        <td th:text="${part.tid}"></td>
-                        <td th:text="${part.name}"></td>
-                        <td th:text="${#dates.format(part.birthDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
-                        <td th:text="${part.position}"></td>
-                        <td>
-                            <button class="btn btn-sm btn-primary">编辑</button>
-                            <button class="btn btn-sm btn-danger">删除</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div id="main">
+                <form method="post" enctype="multipart/form-data" id="upload">
+                    <span><input type="file" name="file"  style="width:500px;" class="uploadfile" id="file">
+                    <input type="button" value="上传"  class="addbtn"></span>
+                </form>
+                <br>
+                <h5>零件插入记录如下：</h5>
+                <div class="info">
+                    <textarea>
+                        [26/06/2019-17:25:32]：编号：ERLYS2Z910，   零件名称：遥控天线1B	插入数据库
+                        [26/06/2019-17:25:32]：编号：3JQBB2NKI8，	零件名称：遥控天线1C	插入数据库
+                        [26/06/2019-17:25:32]：编号：KP43QXZLZA，	零件名称：北蓄电池组A模块	插入数据库
+                        [26/06/2019-17:25:32]：编号：25AONW3A93，	零件名称：测控天线支撑结构	插入数据库
+                        [26/06/2019-17:25:32]：编号：IXTYKEOV0J，	零件名称：遥测天线2	插入数据库
+                        [26/06/2019-17:25:32]：编号：XE9VVXH1RU，	零件名称：北太阳翼	插入数据库
+                        [26/06/2019-17:25:32]：编号：2DRSA2B0CX，	零件名称：遥控天线1C	插入数据库
+                        [26/06/2019-17:25:32]：编号：SSR5M01EP5，	零件名称：遥测天线2	插入数据库
+                        [26/06/2019-17:25:32]：编号：Q46PRQ8KWN，	零件名称：遥控天线1A	插入数据库
+                        [26/06/2019-17:25:32]：编号：VOTY8KRGD2，	零件名称：北蓄电池组A模块	插入数据库
+                    </textarea>
+                </div>
             </div>
+
         </main>
     </div>
 </div>
