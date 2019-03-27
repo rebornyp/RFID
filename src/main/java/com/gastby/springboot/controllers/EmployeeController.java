@@ -70,6 +70,13 @@ public class EmployeeController {
         String path = FileTools.getFileInfo(request, response, file);
     }
 
+    @GetMapping("/partPosition")
+    public String showPartPosition() {
+
+        return "positions/part";
+    }
+
+
 
     @GetMapping("/emp")
     public String addEmp() {

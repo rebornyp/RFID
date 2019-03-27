@@ -63,6 +63,7 @@
 									<th>生产日期</th>
 									<th>制造厂商</th>
 									<th>所在位置</th>
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -73,6 +74,7 @@
 									<td th:text="${part.name}"></td>
 									<td th:text="${#dates.format(part.birthDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
 									<td th:text="${part.position}"></td>
+									<td><a th:href="@{'/partPosition?'+${part.pid}}">查看</a></td>
 									<td>
 										<button class="btn btn-sm btn-primary">编辑</button>
 										<button class="btn btn-sm btn-danger">删除</button>
