@@ -40,19 +40,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="#" th:href="@{/userList}">
+                        <a class="nav-link" th:class="${activeUrl=='userList' ? 'nav-link active' : 'nav-link'}"  href="#" th:href="@{/userList}">
                             <span data-feather="users"></span>
                             用户信息
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{/transport}">
+                        <a class="nav-link" th:class="${activeUrl=='transport' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/transport}">
                             <span data-feather="bar-chart-2"></span>
                             物流信息
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" th:href="@{/storage}">
+                        <a class="nav-link" th:class="${activeUrl=='storage' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/storage}">
                             <span data-feather="bar-chart-2"></span>
                             仓储信息
                         </a>
