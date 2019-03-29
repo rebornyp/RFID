@@ -68,6 +68,7 @@ public class EmployeeController {
     public void uploadFile(@RequestParam(value = "fileinfo", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         //上传文件的路径
         String path = FileTools.getFileInfo(request, response, file);
+
     }
 
     @GetMapping("/partPosition")

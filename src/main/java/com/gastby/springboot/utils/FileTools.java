@@ -1,10 +1,14 @@
 package com.gastby.springboot.utils;
 
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 
 public class FileTools {
     // 自定义上传文件存储目录
@@ -23,16 +27,49 @@ public class FileTools {
         //判断文件是否为空
         if (!file.isEmpty()) {
             try {
-                //文件的保存路径
-                filePath = request.getSession().getServletContext().getRealPath("/") + UPLOAD_DIRECTORY + File.separator + file.getOriginalFilename();
+                //文件的保存路径：request.getSession().getServletContext().getRealPath("/") +
+                filePath = UPLOAD_DIRECTORY + File.separator + file.getOriginalFilename();
                 System.out.println(file.getName());
                 System.out.println(file.getSize());
+                System.out.println(filePath);
                 //转存文件
-                //file.transferTo(new File(filePath));
+                file.transferTo(new File(filePath));
+                System.out.println(xls2String(new File(filePath)));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return filePath;
     }//函数结束符
+
+    /**
+     * 读取xls文件内容
+     * @param file 想要读取的文件对象
+     * @return 返回文件内容
+     */
+    public static String xls2String(File file){
+        String result = "";
+        try{
+            FileInputStream fis = new FileInputStream(file);
+            StringBuilder sb = new StringBuilder();
+            Workbook rwb = Workbook.getWorkbook(fis);
+            Sheet[] sheet = rwb.getSheets();
+            for (int i = 0; i < sheet.length; i++) {
+                Sheet rs = rwb.getSheet(i);
+                for (int j = 0; j < rs.getRows(); j++) {
+                    Cell[] cells = rs.getRow(j);
+                    for(int k=0;k<cells.length;k++)
+                        sb.append(cells[k].getContents());
+                }
+            }
+            fis.close();
+            result += sb.toString();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
 }
