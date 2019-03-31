@@ -25,6 +25,10 @@ public class EmployeeController {
     @Autowired
     PartMapper partMapper;
 
+    @Autowired
+    FileTools fileTools;
+
+
     @GetMapping("/userList")
     public String queryEmps(Model model) {
         Collection<Employee> all = empDao.getAll();
@@ -67,8 +71,7 @@ public class EmployeeController {
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public void uploadFile(@RequestParam(value = "fileinfo", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         //上传文件的路径
-        String path = FileTools.getFileInfo(request, response, file);
-
+        String path = fileTools.getFileInfo(request, response, file);
     }
 
     @GetMapping("/partPosition")

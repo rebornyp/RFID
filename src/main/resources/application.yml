@@ -9,7 +9,7 @@ user:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/rfid?characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+    url: jdbc:mysql://localhost:3306/rfid2?characterEncoding=utf8&useSSL=true&serverTimezone=GMT
     username: root
     password: 962464yp
     type: com.alibaba.druid.pool.DruidDataSource
