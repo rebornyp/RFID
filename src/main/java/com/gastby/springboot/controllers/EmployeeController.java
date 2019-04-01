@@ -3,6 +3,7 @@ package com.gastby.springboot.controllers;
 import com.gastby.springboot.dao.EmployeeDao;
 import com.gastby.springboot.entities.Employee;
 import com.gastby.springboot.entities.Part;
+import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.mapper.PartMapper;
 import com.gastby.springboot.utils.FileTools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class EmployeeController {
@@ -27,6 +27,8 @@ public class EmployeeController {
 
     @Autowired
     FileTools fileTools;
+
+    private String history;
 
 
     @GetMapping("/userList")
@@ -61,17 +63,24 @@ public class EmployeeController {
 
     @GetMapping("/file")
     public String fileUpload(Model model) {
-        List<Part> parts = partMapper.queryAllParts();
-        model.addAttribute("parts", parts);
+        model.addAttribute("msg", "暂无插入记录");
         return "file/uploadPage";
     }
 
     //    上传文件
-    @ResponseBody
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public void uploadFile(@RequestParam(value = "fileinfo", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+    public void uploadFile(@RequestParam(value = "fileinfo", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response, Model model) {
         //上传文件的路径
-        String path = fileTools.getFileInfo(request, response, file);
+        history = fileTools.getFileInfo(request, response, file);
+        //System.out.println(records);
+    }
+
+    @RequestMapping("/refresh/local")
+    public String localRefresh(Model model) {
+        if (null != history)
+            model.addAttribute("msg", history);
+        else model.addAttribute("msg", "暂无插入记录");
+        return "file/uploadPage::table_refresh";
     }
 
     @GetMapping("/partPosition")

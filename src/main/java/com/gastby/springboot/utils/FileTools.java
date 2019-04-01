@@ -1,5 +1,6 @@
 package com.gastby.springboot.utils;
 
+import com.gastby.springboot.entities.InsertRecord;
 import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.mapper.Part2Mapper;
 import jxl.Cell;
@@ -13,7 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -27,6 +31,7 @@ public class FileTools {
     //MultipartFile上传文件
     public String getFileInfo(HttpServletRequest request, HttpServletResponse response, MultipartFile file) {
         String filePath = new String();
+        String records = null;
         String uploadPath = UPLOAD_DIRECTORY;
 
         // 如果目录不存在则创建
@@ -41,13 +46,13 @@ public class FileTools {
                 filePath = UPLOAD_DIRECTORY + File.separator + file.getOriginalFilename();
                 //转存文件
                 file.transferTo(new File(filePath));
-                xls2String(new File(filePath)); // 将xls文件信息插入rfid2数据库的part表中；
+                records = xls2String(new File(filePath)); // 将xls文件信息插入rfid2数据库的part表中；
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return filePath;
+        return records;
     }//函数结束符
 
     /**
@@ -57,9 +62,11 @@ public class FileTools {
      */
     public String xls2String(File file){
         List<Part2> list = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd E a HH:mm:ss");
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
         try{
             FileInputStream fis = new FileInputStream(file);
-            StringBuilder sb = new StringBuilder();
             Workbook rwb = Workbook.getWorkbook(fis);
             Sheet[] sheet = rwb.getSheets();
             for (int i = 0; i < sheet.length; i++) {
@@ -67,17 +74,21 @@ public class FileTools {
                 for (int j = 0; j < rs.getRows(); j++) {
                     Cell[] cells = rs.getRow(j);
                     Part2 part2 = new Part2();
-                    /*for(int k=0;k<cells.length;k++) {
-                        sb.append(cells[k].getContents() + " ");
-                    }*/
+                    InsertRecord insertRecord = new InsertRecord();
+
                     part2.setPid(cells[0].getContents());
                     part2.setName(cells[1].getContents());
                     part2.setType(cells[2].getContents());
                     part2.setInfo(cells[3].getContents());
                     part2.setProducer(cells[4].getContents());
                     part2.setProduceDate(cells[5].getContents());
-                    //sb.append("\n");
                     list.add(part2);
+
+                    Date date = new Date();
+                    insertRecord.setId(part2.getPid());
+                    insertRecord.setName(part2.getName());
+                    insertRecord.setDate(dateFormat.format(date));
+                    sb.append(insertRecord.toString());
                 }
             }
             fis.close();
@@ -87,7 +98,7 @@ public class FileTools {
 
         for (Part2 part2 : list)
             part2Mapper.insertPart(part2);
-        return null;
+        return sb.toString();
     }
 
 

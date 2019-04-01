@@ -48,7 +48,7 @@
         .info {
             position: absolute;
             width: 100%;
-            height: 400px;
+            height: 480px;
             background-color: #99cc66;
         }
 
@@ -78,24 +78,13 @@
             <h2>构件信息文档上传平台</h2>
             <div id="main">
                 <form method="post" enctype="multipart/form-data" id="upload">
-                    <span><input type="file" name="file"  style="width:500px;" class="uploadfile" id="file">
-                    <input type="button" value="上传"  class="addbtn"></span>
+                    <span><input type="file" name="file"  style="width:400px;" id="file">
+                    <input type="button" value="上传"  class="addbtn btn-sm btn-success"></span>
                 </form>
                 <br>
-                <h5>零件插入记录如下：</h5>
+                <span>零件插入记录如下：    <button onClick="localRefresh()" class="btn btn-sm btn-success">点击查看</button></span>
                 <div class="info">
-                    <textarea>
-                        [26/06/2019-17:25:32]：编号：ERLYS2Z910，   零件名称：遥控天线1B	插入数据库
-                        [26/06/2019-17:25:32]：编号：3JQBB2NKI8，	零件名称：遥控天线1C	插入数据库
-                        [26/06/2019-17:25:32]：编号：KP43QXZLZA，	零件名称：北蓄电池组A模块	插入数据库
-                        [26/06/2019-17:25:32]：编号：25AONW3A93，	零件名称：测控天线支撑结构	插入数据库
-                        [26/06/2019-17:25:32]：编号：IXTYKEOV0J，	零件名称：遥测天线2	插入数据库
-                        [26/06/2019-17:25:32]：编号：XE9VVXH1RU，	零件名称：北太阳翼	插入数据库
-                        [26/06/2019-17:25:32]：编号：2DRSA2B0CX，	零件名称：遥控天线1C	插入数据库
-                        [26/06/2019-17:25:32]：编号：SSR5M01EP5，	零件名称：遥测天线2	插入数据库
-                        [26/06/2019-17:25:32]：编号：Q46PRQ8KWN，	零件名称：遥控天线1A	插入数据库
-                        [26/06/2019-17:25:32]：编号：VOTY8KRGD2，	零件名称：北蓄电池组A模块	插入数据库
-                    </textarea>
+                    <textarea id="table_refresh" th:fragment="table_refresh" th:text="${msg}">暂无插入记录...</textarea>
                 </div>
             </div>
 
@@ -144,6 +133,14 @@
 <script type="text/javascript" src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
+</script>
+
+
+<script>
+    function localRefresh() {
+        // 装载局部刷新返回的页面
+        $('#table_refresh').load("/refresh/local");
+    }
 </script>
 
 <!-- Graphs -->
