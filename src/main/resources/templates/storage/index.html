@@ -78,7 +78,9 @@
             height: 100%;
             border:none;
             border-right:1px solid #333;
+            overflow:auto;
         }
+
         #parts table {
             font-size: 14px;
         }
@@ -88,6 +90,7 @@
             right: 0;
             width: 30%;
             height: 100%;
+            overflow:auto;
         }
 
         #history li {
@@ -146,7 +149,7 @@
                                         <th>零件ID</th>
                                         <th>零件名称</th>
                                         <th>生产日期</th>
-                                        <th>制造厂商</th>
+                                        <th>零件材质</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -155,8 +158,8 @@
                                         <td th:text="${part.id}"></td>
                                         <td th:text="${part.pid}"></td>
                                         <td th:text="${part.name}"></td>
-                                        <td th:text="${#dates.format(part.birthDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
-                                        <td th:text="${part.position}"></td>
+                                        <td th:text="${part.produceDate}"></td>
+                                        <td th:text="${part.type}"></td>
                                         <td><a th:href="@{'/partPosition?'+${part.pid}}">查看</a></td>
                                     </tr>
                                 </tbody>

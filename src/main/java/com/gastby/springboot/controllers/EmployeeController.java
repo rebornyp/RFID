@@ -4,7 +4,9 @@ import com.gastby.springboot.dao.EmployeeDao;
 import com.gastby.springboot.entities.Employee;
 import com.gastby.springboot.entities.Part;
 import com.gastby.springboot.entities.Part2;
-import com.gastby.springboot.mapper.PartMapper;
+import com.gastby.springboot.entities.Tag;
+import com.gastby.springboot.mapper.Part2Mapper;
+import com.gastby.springboot.mapper.TagMapper;
 import com.gastby.springboot.utils.FileTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,10 @@ public class EmployeeController {
     private EmployeeDao empDao;
 
     @Autowired
-    PartMapper partMapper;
+    Part2Mapper partMapper;
+
+    @Autowired
+    TagMapper tagMapper;
 
     @Autowired
     FileTools fileTools;
@@ -47,9 +52,16 @@ public class EmployeeController {
 
     @GetMapping("/part")
     public String queryParts(Model model) {
-        List<Part> parts = partMapper.queryAllParts();
+        List<Part2> parts = partMapper.queryAllParts();
         model.addAttribute("parts", parts);
         return "part/partList";
+    }
+
+    @GetMapping("/tags")
+    public String queryTags(Model model) {
+        List<Tag> tags = tagMapper.queryAllTags();
+        model.addAttribute("tags", tags);
+        return "tag/tagList";
     }
 
 
@@ -97,7 +109,7 @@ public class EmployeeController {
 
     @GetMapping("/storage")
     public String showWareHouse(Model model) {
-        List<Part> parts = partMapper.queryAllParts();
+        List<Part2> parts = partMapper.queryAllParts();
         model.addAttribute("parts", parts);
         return "storage/index";
     }

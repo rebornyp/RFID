@@ -71,7 +71,7 @@ public class FileTools {
             Sheet[] sheet = rwb.getSheets();
             for (int i = 0; i < sheet.length; i++) {
                 Sheet rs = rwb.getSheet(i);
-                for (int j = 0; j < rs.getRows(); j++) {
+                for (int j = 1; j < rs.getRows(); j++) {
                     Cell[] cells = rs.getRow(j);
                     Part2 part2 = new Part2();
                     InsertRecord insertRecord = new InsertRecord();
