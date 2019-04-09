@@ -3,9 +3,18 @@ package com.gastby.springboot.entities;
 public class Tag {
     private String id;
     private String tid;
-    private String pid;
+    private String partId;
     private String type;
     private String birthDate;
+
+    public String getPartId() {
+        return partId;
+    }
+
+    public void setPartId(String partId) {
+        this.partId = partId;
+    }
+
 
     public String getId() {
         return id;
@@ -23,13 +32,6 @@ public class Tag {
         this.tid = tid;
     }
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
 
     public String getType() {
         return type;

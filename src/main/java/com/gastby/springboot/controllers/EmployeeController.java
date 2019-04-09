@@ -50,12 +50,6 @@ public class EmployeeController {
         return "part/partList";
     }
 
-    @GetMapping("/tags")
-    public String queryTags(Model model) {
-        List<Tag> tags = tagMapper.queryAllTags();
-        model.addAttribute("tags", tags);
-        return "tag/tagList";
-    }
 
 
 

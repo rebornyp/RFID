@@ -39,6 +39,10 @@
 				-webkit-animation: chartjs-render-animation 0.001s;
 				animation: chartjs-render-animation 0.001s;
 			}
+
+			a {
+				text-decoration: none;
+			}
 		</style>
 	</head>
 
@@ -58,7 +62,7 @@
 								<tr>
 									<th>序号</th>
 									<th>标签编号</th>
-									<th>零件编号</th>
+									<th>绑定零件编号</th>
 									<th>标签类型</th>
 									<th>注册时间</th>
 									<th>操作</th>
@@ -68,11 +72,11 @@
 								<tr th:each="t:${tags}">
 									<td th:text="${t.id}"></td>
 									<td th:text="${t.tid}"></td>
-									<td th:text="${t.pid}"></td>
+									<td th:text="${t.partId}"></td>
 									<td th:text="${t.type}"></td>
 									<td th:text="${t.birthDate}"></td>
 									<td>
-										<button class="btn btn-sm btn-primary">绑定</button>
+										<a th:href="@{'/tags/bind?tid='+${t.tid}+'&id='+${t.id}}"><button class="btn btn-sm btn-primary">绑定</button></a>
 										<button class="btn btn-sm btn-danger">删除</button>
 									</td>
 								</tr>

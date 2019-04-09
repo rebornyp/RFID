@@ -65,6 +65,15 @@ public class Part2 {
     private String info;
     private String producer;
     private String produceDate;
+    private String tid;
+
+    public String getTid() {
+        return tid;
+    }
+
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
 
     @Override
     public String toString() {

@@ -4,6 +4,7 @@ import com.gastby.springboot.entities.InsertRecord;
 import com.gastby.springboot.entities.Part;
 import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.entities.Tag;
+import com.gastby.springboot.mapper.Part2Mapper;
 import com.gastby.springboot.mapper.PartMapper;
 import com.gastby.springboot.mapper.TagMapper;
 import com.gastby.springboot.utils.Utils;
@@ -29,6 +30,8 @@ public class SpringbootApplicationTests {
     @Autowired
     TagMapper tagMapper;
 
+    @Autowired
+    Part2Mapper partMapper;
 
     @Test
     public void con() {
@@ -64,5 +67,13 @@ public class SpringbootApplicationTests {
 
     }
 
+
+    @Test
+    public void testController() {
+        String pid = "ERLYS2Z910";
+        String tid = "sd";
+        partMapper.updateTagInfo(1, tid);
+        tagMapper.updatePartInfo(1, pid);
+    }
 
 }
