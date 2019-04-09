@@ -6,7 +6,6 @@ import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.entities.Tag;
 import com.gastby.springboot.mapper.PartMapper;
 import com.gastby.springboot.mapper.TagMapper;
-import com.gastby.springboot.pojo.User;
 import com.gastby.springboot.utils.Utils;
 import jxl.Cell;
 import jxl.Sheet;

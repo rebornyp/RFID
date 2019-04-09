@@ -7,8 +7,63 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "user")
 public class User {
     private int id;
+    private String userId;
     private String name;
+    private String mailBox;
+    private String gender;
+    private String userPwd;
     private String info;
+    private String level;
+
+    public String getUserPwd() {
+        return userPwd;
+    }
+
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getMailBox() {
+        return mailBox;
+    }
+
+    public void setMailBox(String mailBox) {
+        this.mailBox = mailBox;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+
 
     public int getId() {
         return id;
@@ -26,20 +81,13 @@ public class User {
         this.name = name;
     }
 
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", info='" + info + '\'' +
+        return "用户User{" +
+                "序号：" + id +
+                ", 用户编号：'" + userId + '\'' +
+                ", 用户姓名：'" + name + '\'' +
+                ", 用户级别：'" + level + '\'' +
                 '}';
     }
 }

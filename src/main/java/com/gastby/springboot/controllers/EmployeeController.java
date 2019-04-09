@@ -7,6 +7,8 @@ import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.entities.Tag;
 import com.gastby.springboot.mapper.Part2Mapper;
 import com.gastby.springboot.mapper.TagMapper;
+import com.gastby.springboot.mapper.UserMapper;
+import com.gastby.springboot.pojo.User;
 import com.gastby.springboot.utils.FileTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +24,6 @@ import java.util.*;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeDao empDao;
-
-    @Autowired
     Part2Mapper partMapper;
 
     @Autowired
@@ -36,12 +35,6 @@ public class EmployeeController {
     private String history;
 
 
-    @GetMapping("/userList")
-    public String queryEmps(Model model) {
-        Collection<Employee> all = empDao.getAll();
-        model.addAttribute("emps", all);
-        return "emp/list";
-    }
 
     @GetMapping("/log")
     public String queryLog(Model model) {
@@ -116,9 +109,5 @@ public class EmployeeController {
 
 
 
-    @GetMapping("/emp")
-    public String addEmp() {
-        return "emp/add";
-    }
 
 }

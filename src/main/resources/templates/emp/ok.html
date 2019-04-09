@@ -35,8 +35,8 @@
 				}
 			}
 
-			form {
-				text-align: center;
+			table {
+
 			}
 
 			td {
@@ -49,6 +49,23 @@
 	</head>
 
 	<body>
+	<script language="JavaScript" type="text/javascript">
+
+        function delayURL(url) {
+            var delay = document.getElementById("time").innerHTML;
+            if(delay > 0) {
+                delay--;
+                document.getElementById("time").innerHTML = delay;
+            } else {
+                window.top.location.href = url;
+            }
+            t = setTimeout("delayURL('" + url + "')", 1000);
+        }
+
+        function stop1(){
+            t && clearTimeout(t);
+        }
+	</script>
 	<div th:replace="common/bars::topbar"></div>
 
 		<div class="container-fluid">
@@ -57,56 +74,15 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<h2 class="h2">Section title</h2>
-					<h2>用户注册页面</h2>
-					<!--<h2><a class="btn btn-sm btn-success" href="" th:href="@{/emp/add}">用户添加</a></h2>-->
-					<form th:action="@{/emp/add}" method="post">
-
-						<div class="form-group">
-							<table>
-								<tr>
-									<td style="width: 50px;"><label>姓名:</label></td>
-									<td style="width: 100px;"><input type="text" class="form-control" name="name" placeholder="输入姓名"></td>
-									<td style="width: 50px;"></td>
-									<td style="width: 50px;"><label> 编号:</label></td>
-									<td style="width: 200px;"><input type="text" class="form-control" name="userId" placeholder="输入工号"></td>
-								</tr>
-								<tr>
-									<td><label> 密码:</label></td>
-									<td><input type="text" class="form-control" name="userPwd" placeholder="输入密码"></td>
-									<td></td>
-									<td><label >邮箱:</label></td>
-									<td><input type="email" class="form-control" name="mailBox" placeholder="name@example.com">
-									</td>
-								</tr>
-								<tr>
-									<td><label> 性别:</label></td>
-									<td><input type="text" class="form-control" name="gender" placeholder="输入性别">
-									</td>
-									<td></td>
-									<td><label >级别:</label></td>
-									<td><select class="form-control" name="level">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select></td>
-								</tr>
-
-							</table>
-						</div>
-
-						<div class="form-group">
-							<label >用户信息</label>
-							<textarea class="form-control" name="info" rows="3"></textarea>
-						</div>
-
-						<button class="btn btn-sm btn-success" type="submit">提交信息</button>
-					</form>
-
+					<h5>用户注册成功</h5>页面将在&nbsp<span id="time" style="background: #ccff99">5</span>&nbsp秒钟后自动跳转到用户显示页面，如果不跳转，请点击下面的链接<a href="/userList">&nbsp&nbsp用户页面&nbsp&nbsp</a>
+					<input type="button" class="btn btn-sm btn-danger" value="停止跳转" onclick="stop1();">
 				</main>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			delayURL("/userList");
+		</script>
 
 		<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -120,6 +96,9 @@
 		<script>
 			feather.replace()
 		</script>
+
+
+
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
