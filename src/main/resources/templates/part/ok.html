@@ -34,15 +34,38 @@
 					opacity: 1
 				}
 			}
-			
-			.chartjs-render-monitor {
-				-webkit-animation: chartjs-render-animation 0.001s;
-				animation: chartjs-render-animation 0.001s;
+
+			table {
+
 			}
+
+			td {
+				height: 60px;
+				padding: 3px;
+				text-align: center;
+			}
+
 		</style>
 	</head>
 
 	<body>
+	<script language="JavaScript" type="text/javascript">
+
+        function delayURL(url) {
+            var delay = document.getElementById("time").innerHTML;
+            if(delay > 0) {
+                delay--;
+                document.getElementById("time").innerHTML = delay;
+            } else {
+                window.top.location.href = url;
+            }
+            t = setTimeout("delayURL('" + url + "')", 1000);
+        }
+
+        function stop1(){
+            t && clearTimeout(t);
+        }
+	</script>
 	<div th:replace="common/bars::topbar"></div>
 
 		<div class="container-fluid">
@@ -51,43 +74,15 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<h2 class="h2">Section title</h2>
-					<div style="border: none;border-bottom: 1px solid #1d2124;"><h2>结构星构件信息显示</h2>
-					</div>
-					<h2><a class="btn btn-sm btn-success" href="" th:href="@{/partAdd}">零件添加</a></h2>
-					<div class="table-responsive">
-						<table class="table table-striped table-sm">
-							<thead>
-								<tr>
-									<th>序号</th><!--<td th:text="${part2.id}"></td>-->
-									<th>零件编号</th><!--part2.pid-->
-									<th>零件名称</th><!--part2.name-->
-									<th>零件材质</th><!--part2.type-->
-									<th>零件信息</th><!--part2.info-->
-									<th>出厂位置</th><!--part2.producer-->
-									<th>制造时间</th><!--part2.produceDate-->
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="part2:${parts}">
-									<td th:text="${part2.id}"></td>
-									<td th:text="${part2.pid}"></td>
-									<td th:text="${part2.name}"></td>
-									<td th:text="${part2.type}"></td>
-									<td th:text="${part2.info}"></td>
-									<td><a th:text="${part2.producer}" th:href="@{'/partPosition?'+${part2.pid}}">查看</a></td>
-									<td th:text="${part2.produceDate}"></td>
-									<td>
-										<a th:href="@{'/part/update?id='+${part2.id}}"><button class="btn btn-sm btn-primary">编辑</button></a>
-										<button class="btn btn-sm btn-danger">删除</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<h5>零件添加成功</h5>页面将在&nbsp<span id="time" style="background: #ccff99">5</span>&nbsp秒钟后自动跳转到零件显示页面，如果不跳转，请点击下面的链接<a href="/part">&nbsp&nbsp零件页面&nbsp&nbsp</a>
+					<input type="button" class="btn btn-sm btn-danger" value="停止跳转" onclick="stop1();">
 				</main>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			delayURL("/part");
+		</script>
 
 		<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -101,6 +96,9 @@
 		<script>
 			feather.replace()
 		</script>
+
+
+
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>

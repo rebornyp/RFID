@@ -1,11 +1,9 @@
 package com.gastby.springboot;
 
 import com.gastby.springboot.entities.InsertRecord;
-import com.gastby.springboot.entities.Part;
 import com.gastby.springboot.entities.Part2;
 import com.gastby.springboot.entities.Tag;
 import com.gastby.springboot.mapper.Part2Mapper;
-import com.gastby.springboot.mapper.PartMapper;
 import com.gastby.springboot.mapper.TagMapper;
 import com.gastby.springboot.utils.Utils;
 import jxl.Cell;

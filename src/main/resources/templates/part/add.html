@@ -34,11 +34,17 @@
 					opacity: 1
 				}
 			}
-			
-			.chartjs-render-monitor {
-				-webkit-animation: chartjs-render-animation 0.001s;
-				animation: chartjs-render-animation 0.001s;
+
+			form {
+				text-align: center;
 			}
+
+			td {
+				height: 60px;
+				padding: 3px;
+				text-align: center;
+			}
+
 		</style>
 	</head>
 
@@ -51,40 +57,48 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<h2 class="h2">Section title</h2>
-					<div style="border: none;border-bottom: 1px solid #1d2124;"><h2>结构星构件信息显示</h2>
-					</div>
-					<h2><a class="btn btn-sm btn-success" href="" th:href="@{/partAdd}">零件添加</a></h2>
-					<div class="table-responsive">
-						<table class="table table-striped table-sm">
-							<thead>
+					<div style="border: none;border-bottom: 1px solid #1d2124;"><h2>零件添加页面</h2></div>
+					<!--<h2><a class="btn btn-sm btn-success" href="" th:href="@{/emp/add}">用户添加</a></h2>-->
+					<br>
+					<form th:action="@{/part/add}" method="post">
+
+						<div class="form-group">
+							<table>
 								<tr>
-									<th>序号</th><!--<td th:text="${part2.id}"></td>-->
-									<th>零件编号</th><!--part2.pid-->
-									<th>零件名称</th><!--part2.name-->
-									<th>零件材质</th><!--part2.type-->
-									<th>零件信息</th><!--part2.info-->
-									<th>出厂位置</th><!--part2.producer-->
-									<th>制造时间</th><!--part2.produceDate-->
-									<th>操作</th>
+									<td style="width: 50px;"><label>零件名称:</label></td>
+									<td style="width: 100px;"><input type="text" class="form-control" name="name" placeholder="输入名称"></td>
+									<td style="width: 50px;"></td>
+									<td style="width: 50px;"><label>零件编号:</label></td>
+									<td style="width: 200px;"><input type="text" class="form-control" name="partId" placeholder="输入编号"></td>
 								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="part2:${parts}">
-									<td th:text="${part2.id}"></td>
-									<td th:text="${part2.pid}"></td>
-									<td th:text="${part2.name}"></td>
-									<td th:text="${part2.type}"></td>
-									<td th:text="${part2.info}"></td>
-									<td><a th:text="${part2.producer}" th:href="@{'/partPosition?'+${part2.pid}}">查看</a></td>
-									<td th:text="${part2.produceDate}"></td>
-									<td>
-										<a th:href="@{'/part/update?id='+${part2.id}}"><button class="btn btn-sm btn-primary">编辑</button></a>
-										<button class="btn btn-sm btn-danger">删除</button>
+								<tr>
+									<td><label>零件材质:</label></td>
+									<td><input type="text" class="form-control" name="type" placeholder="输入材质"></td>
+									<td></td>
+									<td><label >出厂位置:</label></td>
+									<td><input type="text" class="form-control" name="position" placeholder="输入位置">
 									</td>
 								</tr>
-							</tbody>
-						</table>
-					</div>
+								<tr>
+									<td><label>制造时间:</label></td>
+									<td><input type="text" class="form-control" name="birthDate" placeholder="输入时间">
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+
+							</table>
+						</div>
+
+						<div class="form-group">
+							<label >零件信息</label>
+							<textarea class="form-control" name="info" rows="3"></textarea>
+						</div>
+
+						<button class="btn btn-sm btn-success" type="submit">点击提交零件信息</button>
+					</form>
+
 				</main>
 			</div>
 		</div>

@@ -11,16 +11,16 @@ public class User {
     private String name;
     private String mailBox;
     private String gender;
-    private String userPwd;
     private String info;
     private String level;
+    private String password;
 
-    public String getUserPwd() {
-        return userPwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getInfo() {

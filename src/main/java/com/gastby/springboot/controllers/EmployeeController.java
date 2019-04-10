@@ -1,14 +1,8 @@
 package com.gastby.springboot.controllers;
 
-import com.gastby.springboot.dao.EmployeeDao;
-import com.gastby.springboot.entities.Employee;
-import com.gastby.springboot.entities.Part;
 import com.gastby.springboot.entities.Part2;
-import com.gastby.springboot.entities.Tag;
 import com.gastby.springboot.mapper.Part2Mapper;
 import com.gastby.springboot.mapper.TagMapper;
-import com.gastby.springboot.mapper.UserMapper;
-import com.gastby.springboot.pojo.User;
 import com.gastby.springboot.utils.FileTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,12 +37,7 @@ public class EmployeeController {
         return "log/info";
     }
 
-    @GetMapping("/part")
-    public String queryParts(Model model) {
-        List<Part2> parts = partMapper.queryAllParts();
-        model.addAttribute("parts", parts);
-        return "part/partList";
-    }
+
 
 
 
@@ -82,11 +71,7 @@ public class EmployeeController {
         return "file/uploadPage::table_refresh";
     }
 
-    @GetMapping("/partPosition")
-    public String showPartPosition() {
 
-        return "positions/part";
-    }
 
     @GetMapping("/transport")
     public String showMap() {
