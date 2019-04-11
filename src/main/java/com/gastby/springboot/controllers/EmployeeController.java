@@ -73,11 +73,7 @@ public class EmployeeController {
 
 
 
-    @GetMapping("/transport")
-    public String showMap() {
 
-        return "transport/map";
-    }
 
     @GetMapping("/storage")
     public String showWareHouse(Model model) {
