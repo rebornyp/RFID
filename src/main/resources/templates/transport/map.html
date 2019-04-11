@@ -234,6 +234,16 @@
         .hiddenCircle {
             background-color: darkgray;
         }
+
+
+        .showDiv {
+            display: block;
+        }
+
+        .hiddenDiv {
+            display: none;
+        }
+
     </style>
 
 </head>
@@ -253,34 +263,34 @@
             <h2>结构星总装实时物流信息显示</h2>
 
             <div id="drawing">
-                <div id="up1"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="up2"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="down1"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="down2"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="right1"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="right2"><img th:src="@{/files/icons/arrow.jpg}"/></div>
-                <div id="u1"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="utx1"><a>运送单数：<b><a href="#">2</a></b></a></div>
-                <div id="u2"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="utx2"><a>运送单数：<b><a href="#">3</a></b></a></div>
-                <div id="d1"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="dtx1"><a>运送单数：<b><a href="#">1</a></b></a></div>
-                <div id="d2"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="dtx2"><a>运送单数：<b><a href="#">3</a></b></a></div>
-                <div id="r1"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="rtx1"><a>运送单数：<b><a href="#">1</a></b></a></div>
-                <div id="r2"><img th:src="@{/files/icons/car.jpg}"/></div>
-                <div id="rtx2"><a>运送单数：<b><a href="#">1</a></b></a></div>
+                <div id="up1" th:classappend="${a2b == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="up2" th:classappend="${b2a == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="down1" th:classappend="${a2c == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="down2" th:classappend="${c2a == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="right1" th:classappend="${b2c == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="right2" th:classappend="${c2b == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/arrow.jpg}"/></div>
+                <div id="u1" th:classappend="${a2b == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="utx1" th:classappend="${a2b == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=KF-A&&e=ZJ-B" th:text="${a2b}">2</a></b></div>
+                <div id="u2" th:classappend="${b2a == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="utx2" th:classappend="${b2a == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=ZJ-B&&e=KF-A" th:text="${b2a}">3</a></b></div>
+                <div id="d1" th:classappend="${a2c == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="dtx1" th:classappend="${a2c == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=KF-A&&e=ZZ-C" th:text="${a2c}">1</a></b></div>
+                <div id="d2" th:classappend="${c2a == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="dtx2" th:classappend="${c2a == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=ZZ-C&&e=KF-A" th:text="${c2a}">3</a></b></div>
+                <div id="r1" th:classappend="${b2c == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="rtx1" th:classappend="${b2c == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=ZJ-B&&e=ZZ-C" th:text="${b2c}">1</a></b></div>
+                <div id="r2" th:classappend="${c2b == 0}?'hiddenDiv':'showDiv'"><img th:src="@{/files/icons/car.jpg}"/></div>
+                <div id="rtx2" th:classappend="${c2b == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=ZZ-C&&e=ZJ-B" th:text="${c2b}">1</a></b></div>
 
                 <div class="circle showCircle" style="left: 200px;top: 175px;">
-                    <div class="littleCircle"><a th:href="@{/storage}"><img th:src="@{/files/icons/1.jpg}"  alt="点击查看库房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?houseId=KF-A"><img th:src="@{/files/icons/1.jpg}"  alt="点击查看库房信息" /></a></div>
                 </div>
 
                 <div class="circle hiddenCircle" style="left: 800px;top: 50px;">
-                    <div class="littleCircle"><a href="#"><img th:src="@{/files/icons/2.jpg}"  alt="点击查看质检厂房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?houseId=ZJ-B"><img th:src="@{/files/icons/2.jpg}"  alt="点击查看质检厂房信息" /></a></div>
                 </div>
                 <div class="circle hiddenCircle" style="left: 800px;top: 300px;">
-                    <div class="littleCircle"><a href="#"><img th:src="@{/files/icons/3.jpg}"  alt="点击查看总装厂房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?houseId=ZZ-C"><img th:src="@{/files/icons/3.jpg}"  alt="点击查看总装厂房信息" /></a></div>
                 </div>
 
                 <div style="position: absolute;top:190px;left:110px"><h4>库房A</h4></div>

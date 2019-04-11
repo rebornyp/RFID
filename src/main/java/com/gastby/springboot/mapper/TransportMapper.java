@@ -16,11 +16,10 @@ public interface TransportMapper {
     @Select("select * from transport")
     List<TransportPojo> queryAllTransportMissions();
 
-/*
-    @Select("select * from user where id = #{id} limit 1")
-    User queryUserById(@Param(value = "id") Integer id);
+    @Select("select * from transport where isDone = 0")
+    List<TransportPojo> queryBusyMissions();
 
-    @Update("update user set userId=#{userId}, name=#{name}, password=#{password}," +
-            " level=#{level}, mailbox=#{mailBox}, gender=#{gender}, info=#{info} where id=#{id}")
-    void updateUserById(User user);*/
+    @Select("select * from transport where startHouse = #{start} && endHouse = #{end}")
+    List<TransportPojo> queryMissionsByPath(@Param(value = "start") String s, @Param(value = "end") String e);
+
 }

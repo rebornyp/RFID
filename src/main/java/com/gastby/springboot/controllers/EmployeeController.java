@@ -75,12 +75,7 @@ public class EmployeeController {
 
 
 
-    @GetMapping("/storage")
-    public String showWareHouse(Model model) {
-        List<Part2> parts = partMapper.queryAllParts();
-        model.addAttribute("parts", parts);
-        return "storage/index";
-    }
+
 
 
 

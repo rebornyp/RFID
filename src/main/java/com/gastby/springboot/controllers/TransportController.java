@@ -24,14 +24,42 @@ public class TransportController {
     @Autowired
     PartListMapper partListMapper;
 
+    String A = "KF-A", B = "ZJ-B", C = "ZZ-C";
+
     @GetMapping("/transport")
-    public String showMap() {
+    public String showMap(Model model) {
+        List<TransportPojo> list = transportMapper.queryBusyMissions();
+        int A2B = 0, A2C = 0, B2A = 0, B2C = 0, C2A = 0, C2B = 0;
+        String sh, eh;
+        for (TransportPojo t : list) {
+            sh = t.getStartHouse();
+            eh = t.getEndHouse();
+            if (sh.equals(A) && eh.equals(B)) A2B ++;
+            else if (sh.equals(A) && eh.equals(C)) A2C ++;
+            else if (sh.equals(B) && eh.equals(A)) B2A ++;
+            else if (sh.equals(B) && eh.equals(C)) B2C ++;
+            else if (sh.equals(C) && eh.equals(A)) C2A ++;
+            else if (sh.equals(C) && eh.equals(B)) C2B ++;
+        }
+        model.addAttribute("a2b", A2B);
+        model.addAttribute("a2c", A2C);
+        model.addAttribute("b2a", B2A);
+        model.addAttribute("b2c", B2C);
+        model.addAttribute("c2a", C2A);
+        model.addAttribute("c2b", C2B);
         return "transport/map";
     }
 
     @GetMapping("/trans")
     public String showAllTransportLists(Model model) {
         List<TransportPojo> missions = transportMapper.queryAllTransportMissions();
+        model.addAttribute("missions", missions);
+        return "transport/missions";
+    }
+
+    @GetMapping("/trans/path")
+    public String showpartTransportLists(Model model, String s, String e) {
+        List<TransportPojo> missions = transportMapper.queryMissionsByPath(s, e);
         model.addAttribute("missions", missions);
         return "transport/missions";
     }

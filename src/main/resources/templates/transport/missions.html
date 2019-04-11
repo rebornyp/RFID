@@ -78,8 +78,8 @@
 									<td th:text="${mission.readerId}"></td>
 									<td th:text="${mission.startTime}"></td>
 									<td th:text="${mission.endTime}"></td>
-									<td th:text="${mission.startHouse}"></td>
-									<td th:text="${mission.endHouse}"></td>
+									<td><a th:href="@{'/storage?id='+${mission.startHouse}}" th:text="${mission.startHouse}"></a></td>
+									<td><a th:href="@{'/storage?id='+${mission.startHouse}}" th:text="${mission.endHouse}"></a></td>
 									<td th:text="${mission.worker}"></td>
 									<td th:text="${mission.info}"></td>
 								</tr>
