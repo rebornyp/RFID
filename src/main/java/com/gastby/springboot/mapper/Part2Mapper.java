@@ -29,5 +29,8 @@ public interface Part2Mapper {
     void updatePartById(Part2 part);
 
     @Select("select * from part where position = #{houseName}")
-    List<Part2> queryPartsByHouseId(@Param(value = ("houseName")) String name);
+    List<Part2> queryPartsByHouseName(@Param(value = ("houseName")) String name);
+
+    @Select("select name from part where pid = #{id}")
+    String queryPartNameById(@Param(value = "id") String partId);
 }

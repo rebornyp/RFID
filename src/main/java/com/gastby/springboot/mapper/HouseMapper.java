@@ -21,4 +21,7 @@ public interface HouseMapper {
 
     @Select("select name from store where storeId = #{storeId}")
     String queryHouseNameById(@Param(value = "storeId") String a);
+
+    @Select("select reader from store where storeId = #{id}")
+    String queryReaderById(@Param(value = "id") String curHouseId);
 }

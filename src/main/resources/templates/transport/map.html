@@ -283,14 +283,14 @@
                 <div id="rtx2" th:classappend="${c2b == 0}?'hiddenDiv':'showDiv'">运送单数：<b><a href="/trans/path?s=ZZ-C&&e=ZJ-B" th:text="${c2b}">1</a></b></div>
 
                 <div class="circle showCircle" style="left: 200px;top: 175px;">
-                    <div class="littleCircle"><a href="/storage?houseId=KF-A"><img th:src="@{/files/icons/1.jpg}"  alt="点击查看库房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?curHouseId=KF-A"><img th:src="@{/files/icons/1.jpg}"  alt="点击查看库房信息" /></a></div>
                 </div>
 
                 <div class="circle hiddenCircle" style="left: 800px;top: 50px;">
-                    <div class="littleCircle"><a href="/storage?houseId=ZJ-B"><img th:src="@{/files/icons/2.jpg}"  alt="点击查看质检厂房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?curHouseId=ZJ-B"><img th:src="@{/files/icons/2.jpg}"  alt="点击查看质检厂房信息" /></a></div>
                 </div>
                 <div class="circle hiddenCircle" style="left: 800px;top: 300px;">
-                    <div class="littleCircle"><a href="/storage?houseId=ZZ-C"><img th:src="@{/files/icons/3.jpg}"  alt="点击查看总装厂房信息" /></a></div>
+                    <div class="littleCircle"><a href="/storage?curHouseId=ZZ-C"><img th:src="@{/files/icons/3.jpg}"  alt="点击查看总装厂房信息" /></a></div>
                 </div>
 
                 <div style="position: absolute;top:190px;left:110px"><h4>库房A</h4></div>

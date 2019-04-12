@@ -21,4 +21,6 @@ public interface TagMapper {
     @Update("update tag set partId = #{partId} where id = #{id}")
     void updatePartInfo(@Param(value="id")Integer id, @Param(value="partId")String pid);
 
+    @Select("select partId from tag where tid = #{id}")
+    String queryPartIdByTagId(@Param(value = "id") String tagId);
 }
