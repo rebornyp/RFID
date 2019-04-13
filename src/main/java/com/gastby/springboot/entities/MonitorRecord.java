@@ -1,6 +1,6 @@
 package com.gastby.springboot.entities;
 
-public class MonitorRecord {
+public class MonitorRecord implements Record{
     private String id;
     private String readerId;
     private String tagId;
@@ -81,5 +81,30 @@ public class MonitorRecord {
 
     public void setWorker(String worker) {
         this.worker = worker;
+    }
+
+    @Override
+    public String startTime() {
+        return startTime;
+    }
+
+    @Override
+    public String endTime() {
+        return endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "MonitorRecord{" +
+                "id='" + id + '\'' +
+                ", readerId='" + readerId + '\'' +
+                ", tagId='" + tagId + '\'' +
+                ", info='" + info + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", worker='" + worker + '\'' +
+                ", partId='" + partId + '\'' +
+                ", partName='" + partName + '\'' +
+                '}';
     }
 }

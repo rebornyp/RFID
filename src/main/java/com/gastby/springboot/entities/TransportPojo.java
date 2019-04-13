@@ -1,6 +1,7 @@
 package com.gastby.springboot.entities;
 
-public class TransportPojo {
+
+public class TransportPojo implements Record{
     private String id; //自增序号
     private String tid; //货运任务编号
     private String listId; //货运清单编号
@@ -10,6 +11,7 @@ public class TransportPojo {
     private String startHouse; // 开始厂房
     private String endHouse; // 结束厂房
     private String worker; // 工人编号
+
 
     public String getWorker() {
         return worker;
@@ -93,5 +95,31 @@ public class TransportPojo {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    @Override
+    public String startTime() {
+        return startTime;
+    }
+
+    @Override
+    public String endTime() {
+        return startTime;
+    }
+
+    @Override
+    public String toString() {
+        return "TransportPojo{" +
+                "id='" + id + '\'' +
+                ", tid='" + tid + '\'' +
+                ", listId='" + listId + '\'' +
+                ", readerId='" + readerId + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", startHouse='" + startHouse + '\'' +
+                ", endHouse='" + endHouse + '\'' +
+                ", worker='" + worker + '\'' +
+                ", info='" + info + '\'' +
+                '}';
     }
 }

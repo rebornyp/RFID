@@ -1,6 +1,7 @@
 package com.gastby.springboot.controllers;
 
 import com.gastby.springboot.entities.Part2;
+import com.gastby.springboot.mapper.MonitorRecordMapper;
 import com.gastby.springboot.mapper.Part2Mapper;
 import com.gastby.springboot.mapper.TagMapper;
 import com.gastby.springboot.utils.FileTools;
@@ -26,18 +27,9 @@ public class EmployeeController {
     @Autowired
     FileTools fileTools;
 
+
+
     private String history;
-
-
-
-    @GetMapping("/log")
-    public String queryLog(Model model) {
-//        Collection<Employee> all = empDao.getAll();
-//        model.addAttribute("emps", all);
-        return "log/info";
-    }
-
-
 
 
 
