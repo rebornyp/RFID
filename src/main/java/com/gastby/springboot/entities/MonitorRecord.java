@@ -95,16 +95,14 @@ public class MonitorRecord implements Record{
 
     @Override
     public String toString() {
-        return "MonitorRecord{" +
-                "id='" + id + '\'' +
-                ", readerId='" + readerId + '\'' +
-                ", tagId='" + tagId + '\'' +
-                ", info='" + info + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", worker='" + worker + '\'' +
-                ", partId='" + partId + '\'' +
-                ", partName='" + partName + '\'' +
-                '}';
+        return "出入库监控：{" +
+                "记录编号='" + id + '\'' +
+                ", 阅读器编号='" + readerId + '\'' +
+                ", 出入库信息='" + info + '\'' +
+                ", 开始时间='" + startTime + '\'' +
+                ", 结束时间='" + endTime + '\'' +
+                ", 阅读器编号='" + partId + '\'' +
+                ", 零件名称='" + partName + '\'' +
+                "}；";
     }
 }

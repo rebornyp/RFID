@@ -109,17 +109,16 @@ public class TransportPojo implements Record{
 
     @Override
     public String toString() {
-        return "TransportPojo{" +
-                "id='" + id + '\'' +
-                ", tid='" + tid + '\'' +
-                ", listId='" + listId + '\'' +
-                ", readerId='" + readerId + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", startHouse='" + startHouse + '\'' +
-                ", endHouse='" + endHouse + '\'' +
-                ", worker='" + worker + '\'' +
-                ", info='" + info + '\'' +
-                '}';
+        return "运输任务：{" +
+                "运输任务编号='" + tid + '\'' +
+                ", 零件清单编号='" + listId + '\'' +
+                ", 阅读器编号='" + readerId + '\'' +
+                ", 开始时间='" + startTime + '\'' +
+                ", 结束时间='" + endTime + '\'' +
+                ", 起始位置='" + startHouse + '\'' +
+                ", 结束位置='" + endHouse + '\'' +
+                ", 配送员='" + worker + '\'' +
+                ", 配送物料信息='" + info + '\'' +
+                "}；";
     }
 }

@@ -38,7 +38,12 @@ public class LogController {
                 return new MyTimeFormat(o1.startTime()).compareTo(new MyTimeFormat(o2.startTime()));
             }
         });
-        System.out.println(list);
+        List<String> records = new ArrayList<>();
+        int i = 1;
+        for (Record r : list) {
+            records.add("第"+i++ +"条记录："+r.toString());
+        }
+        model.addAttribute("records", records);
         return "log/info";
     }
 
