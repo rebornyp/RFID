@@ -22,4 +22,6 @@ public interface TransportMapper {
     @Select("select * from transport where startHouse = #{start} && endHouse = #{end}")
     List<TransportPojo> queryMissionsByPath(@Param(value = "start") String s, @Param(value = "end") String e);
 
+    @Select("select * from transport where tid = #{str}")
+    TransportPojo queryTransById(String str);
 }

@@ -1,8 +1,10 @@
 package com.gastby.springboot.controllers;
 
+import com.gastby.springboot.entities.House;
+import com.gastby.springboot.entities.MonitorRecord;
 import com.gastby.springboot.entities.Part2;
-import com.gastby.springboot.mapper.Part2Mapper;
-import com.gastby.springboot.mapper.UserMapper;
+import com.gastby.springboot.entities.TransportPojo;
+import com.gastby.springboot.mapper.*;
 import com.gastby.springboot.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,15 @@ public class PartController {
     @Autowired
     Part2Mapper partMapper;
 
+    @Autowired
+    HouseMapper houseMapper;
+
+    @Autowired
+    TransportMapper transportMapper;
+
+    @Autowired
+    PartListMapper partListMapper;
+
     @GetMapping("/part")
     public String queryParts(Model model) {
         List<Part2> parts = partMapper.queryAllParts();
@@ -34,9 +45,36 @@ public class PartController {
     }
 
     @GetMapping("/partPosition")
-    public String showPartPosition() {
+    public String showPartPosition(Model model, String curPosition, String partId, String partName) {
+        model.addAttribute("partId", partId);
+        model.addAttribute("partName", partName);
+        List<House> houses = houseMapper.queryAllHouse();
+        for (House house : houses) {
+            if (house.getName().equals(curPosition)) {
+                model.addAttribute("curHouseId", house.getStoreId());
+                model.addAttribute("curHouseName", house.getName());
+                return "positions/map";
+            }
+        }
+        TransportPojo tr = transportMapper.queryTransById(curPosition);
+        String start = tr.getStartHouse(), end = tr.getEndHouse();
 
-        return "positions/part";
+        start = help(start);
+        end = help(end);
+        String position = start+"2"+end;
+        model.addAttribute("p", position);
+        model.addAttribute("curTransportId", curPosition);
+        model.addAttribute("partId", partId);
+        model.addAttribute("curTransportPack", tr.getListId());
+
+        return "positions/map";
+    }
+
+    String help(String start) {
+        if (start.equals("KF-A")) start = "a";
+        else if(start.equals("ZJ-B")) start = "b";
+        else if(start.equals("ZZ-C")) start = "c";
+        return start;
     }
 
     @PostMapping("/part/add")

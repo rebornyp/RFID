@@ -13,4 +13,5 @@ public interface MonitorRecordMapper {
     @Select("select * from monitor where readerId = #{id}")
     List<MonitorRecord> queryAllRecordsByReaderId(@Param(value = "id")String readerId);
 
+
 }

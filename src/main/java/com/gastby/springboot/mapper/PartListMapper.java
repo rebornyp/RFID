@@ -21,4 +21,8 @@ public interface PartListMapper {
             "&& partlist.partListId=#{id};")
     List<Part2> queryPartListById(@Param(value = "id") String temp);
 
+
+    @Select("select * from partlist where partListId = #{id}")
+    List<String> queryAllPartId(@Param(value = "id")String partListId);
+
 }

@@ -62,7 +62,7 @@
 									<th>零件编号</th><!--part2.pid-->
 									<th>零件名称</th><!--part2.name-->
 									<th>零件材质</th><!--part2.type-->
-									<th>零件信息</th><!--part2.info-->
+									<th>零件位置</th><!--part2.info-->
 									<th>出厂位置</th><!--part2.producer-->
 									<th>制造时间</th><!--part2.produceDate-->
 									<th>操作</th>
@@ -74,8 +74,8 @@
 									<td th:text="${part2.pid}"></td>
 									<td th:text="${part2.name}"></td>
 									<td th:text="${part2.type}"></td>
-									<td th:text="${part2.info}"></td>
-									<td><a th:text="${part2.producer}" th:href="@{'/partPosition?'+${part2.pid}}">查看</a></td>
+									<td><a th:text="${part2.position}" th:href="@{'/partPosition?curPosition='+${part2.position}+'&partId='+${part2.pid}+'&partName='+${part2.name}}"></a></td>
+									<td><a th:text="${part2.producer}" th:href="@{'/storage2?curHouseName='+${part2.producer}}">查看</a></td>
 									<td th:text="${part2.produceDate}"></td>
 									<td>
 										<a th:href="@{'/part/update?id='+${part2.id}}"><button class="btn btn-sm btn-primary">编辑</button></a>
