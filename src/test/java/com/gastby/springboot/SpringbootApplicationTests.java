@@ -74,4 +74,11 @@ public class SpringbootApplicationTests {
         tagMapper.updatePartInfo(1, pid);
     }
 
+    @Test
+    public void testString() {
+        String s;
+        //s += "sd";
+
+    }
+
 }

@@ -31,15 +31,40 @@ public class TransportController {
         List<TransportPojo> list = transportMapper.queryBusyMissions();
         int A2B = 0, A2C = 0, B2A = 0, B2C = 0, C2A = 0, C2B = 0;
         String sh, eh;
+        String a2b = "", b2a = "", a2c = "", c2a = "", b2c = "", c2b = "";
         for (TransportPojo t : list) {
             sh = t.getStartHouse();
             eh = t.getEndHouse();
-            if (sh.equals(A) && eh.equals(B)) A2B ++;
-            else if (sh.equals(A) && eh.equals(C)) A2C ++;
-            else if (sh.equals(B) && eh.equals(A)) B2A ++;
-            else if (sh.equals(B) && eh.equals(C)) B2C ++;
-            else if (sh.equals(C) && eh.equals(A)) C2A ++;
-            else if (sh.equals(C) && eh.equals(B)) C2B ++;
+            if (sh.equals(A) && eh.equals(B)) {
+                A2B ++;
+                a2b += t.getTid();
+                a2b += " ";
+            }
+            else if (sh.equals(A) && eh.equals(C)) {
+                A2C ++;
+                a2c += t.getTid();
+                a2c += " ";
+            }
+            else if (sh.equals(B) && eh.equals(A)) {
+                B2A ++;
+                b2a += t.getTid();
+                b2a += " ";
+            }
+            else if (sh.equals(B) && eh.equals(C)) {
+                B2C ++;
+                b2c += t.getTid();
+                b2c += " ";
+            }
+            else if (sh.equals(C) && eh.equals(A)) {
+                C2A ++;
+                c2a += t.getTid();
+                c2a += " ";
+            }
+            else if (sh.equals(C) && eh.equals(B)) {
+                C2B ++;
+                c2b += t.getTid();
+                c2b += " ";
+            }
         }
         model.addAttribute("a2b", A2B);
         model.addAttribute("a2c", A2C);
@@ -47,6 +72,29 @@ public class TransportController {
         model.addAttribute("b2c", B2C);
         model.addAttribute("c2a", C2A);
         model.addAttribute("c2b", C2B);
+
+        String info = "";
+        if (A2B != 0) {
+            info += "从 库房A 到 质检厂房B 的运输单数有 " + A2B + " 个，编号分别为" + a2b + ";\n";
+        }
+        if (B2A != 0) {
+            info += "从 质检厂房B 到 库房A 的运输单数有 " + B2A + " 个，编号分别为" + b2a + ";\n";
+        }
+        if (A2C != 0) {
+            info += "从 库房A 到 总装厂房C 的运输单数有 " + A2C + " 个，编号分别为" + a2c + ";\n";
+        }
+        if (C2A != 0) {
+            info += "从 总装厂房C 到 库房A 的运输单数有 " + C2A + " 个，编号分别为" + c2a + ";\n";
+        }
+        if (B2C != 0) {
+            info += "从 质检厂房B 到 总装厂房C 的运输单数有 " + B2C + " 个，编号分别为" + b2c + ";\n";
+        }
+        if (C2B != 0) {
+            info += "从 总装厂房C 到 质检厂房B 的运输单数有 " + C2B + " 个，编号分别为" + c2b + ";\n";
+        }
+        model.addAttribute("info", info);
+
+
         return "transport/map";
     }
 

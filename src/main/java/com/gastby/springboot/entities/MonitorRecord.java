@@ -100,9 +100,6 @@ public class MonitorRecord implements Record{
                 ", 阅读器编号='" + readerId + '\'' +
                 ", 出入库信息='" + info + '\'' +
                 ", 开始时间='" + startTime + '\'' +
-                ", 结束时间='" + endTime + '\'' +
-                ", 阅读器编号='" + partId + '\'' +
-                ", 零件名称='" + partName + '\'' +
-                "}；";
+                ", 结束时间='" + endTime;
     }
 }
