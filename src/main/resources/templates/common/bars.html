@@ -11,6 +11,7 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" th:fragment="topbar">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">RFID后台管理系统</a>
     <input class="form-control form-control-dark w-100" type="text" placeholder="搜索..." aria-label="Search">
+    <!--<h4>[[${session.loginUser}]]，欢迎您进入后台管理系统</h4>-->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="#">退出登录</a>
@@ -79,21 +80,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" th:class="${activeUrl=='file' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/file}">
                             <span data-feather="file-text"></span>
-                            标签操作
+                            文档上传
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" th:href="@{/dataAnalyze}">
                             <span data-feather="file-text"></span>
                             数据分析
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:class="${activeUrl=='file' ? 'nav-link active' : 'nav-link'}" href="#" th:href="@{/file}">
-                            <span data-feather="file-text"></span>
-                            文档上传
                         </a>
                     </li>
                 </ul>
