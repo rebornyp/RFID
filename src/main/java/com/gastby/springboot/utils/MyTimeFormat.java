@@ -2,7 +2,27 @@ package com.gastby.springboot.utils;
 
 public class MyTimeFormat implements Comparable<MyTimeFormat> {
 
-    int month, day, year, hour, minute;
+    private int month, day, year, hour, minute;
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
 
     public MyTimeFormat(String info) {
         String[] temp = info.split(" ");
@@ -28,5 +48,10 @@ public class MyTimeFormat implements Comparable<MyTimeFormat> {
         if (minute < o.minute) return -1;
         else if (minute > o.minute) return 1;
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return year+"/"+month+"/"+day;
     }
 }

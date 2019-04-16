@@ -1,5 +1,7 @@
 package com.gastby.springboot.entities;
 
+import com.gastby.springboot.utils.MyTimeFormat;
+
 public class MonitorRecord implements Record{
     private String id;
     private String readerId;
@@ -10,6 +12,7 @@ public class MonitorRecord implements Record{
     private String worker;
     private String partId;
     private String partName;
+    public MyTimeFormat myTimeFormat;
 
     public String getPartId() {
         return partId;
