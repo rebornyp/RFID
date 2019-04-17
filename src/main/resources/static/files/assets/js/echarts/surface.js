@@ -28,7 +28,7 @@ for (var i = 0; i < 1; i++) {
 
 option = {
     title: {
-        text: '系统每日活跃动态数据历史纪录折线图'
+        text: '仓储监控出入库数历史纪录折线统计图'
     },
     tooltip: {
         trigger: 'axis',
