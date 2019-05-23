@@ -1,6 +1,7 @@
 package com.gastby.springboot.mapper;
 
 import com.gastby.springboot.entities.MonitorRecord;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -16,4 +17,10 @@ public interface MonitorRecordMapper {
 
     @Select("select * from monitor")
     List<MonitorRecord> queryAllRecords();
+
+    @Insert("insert monitor (readerId, tagId, info, startTime, endTime, worker) " +
+            "values(#{readerId}, #{tagId}, #{info}, #{startTime}, #{endTime}, #{worker})")
+    void insertPart(MonitorRecord record);
+
+
 }
