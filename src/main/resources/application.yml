@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/rfid2?characterEncoding=utf8&useSSL=true&serverTimezone=GMT
     username: root
-    password: 962464yp
+    password: ********
     type: com.alibaba.druid.pool.DruidDataSource
     # 为数据库连接池设置诸多参数
     initialSize: 5
